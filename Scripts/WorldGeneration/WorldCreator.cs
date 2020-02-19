@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Holds onto all hexagons in the hexmap 2d array. Also constructs the world according to height and width.
+/// </summary>
 public class WorldCreator : MonoBehaviour
 {
     public int height, width;

@@ -2,21 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+/// <summary>
+/// Holds all of the Utility items. Will eventually move these into many different classes.
+/// </summary>
 public class HexUtility
 {
+    // An enumerator that keeps a list of each kind of biome
     public enum HexBiome
     {
         Grass, Forest, Hilly, Ocean, Desert, Mountain, White = -1 
     }
 
+    public static readonly int HexBiomeSize = 6;
+
+    // An enumerator that keeps a list of each direction
     public enum HexDirection
     {
         SW, W, NW, NE, E, SE
     }
 
-    public static readonly int HexBiomeSize = 6;
-
+    // A struct that HexInfo holds that has its coordinates
     public struct HexCoordinates
     {
 
@@ -30,11 +35,11 @@ public class HexUtility
         }
     }
 
-
+    // outer and inner radius of the Hexagons
     public const float outerRadius = 10f;
-
     public const float innerRadius = outerRadius / 2;
 
+    // The triangles for the Hexagons mesh
     public static int[] triangles = 
         {
             1,5,0,
@@ -43,6 +48,7 @@ public class HexUtility
             2,3,4
         };
 
+    // The Vectors of each corner of the hexagon mesh
     public static Vector3[] corners = {
             new Vector3(-outerRadius , 0, -innerRadius),
             new Vector3(-outerRadius, 0, innerRadius),
@@ -52,6 +58,7 @@ public class HexUtility
             new Vector3(0f, 0, -outerRadius)
     };
 
+    // The Vectors of each corner for the uv of the hexagon mesh
     public static Vector2[] uv =
     {
             new Vector3(-outerRadius, 0, -innerRadius),
@@ -62,6 +69,7 @@ public class HexUtility
             new Vector3(0f, 0, -outerRadius)
     };
 
+    // A method that returns the color associated with each biome
     public static Color GetHexColor(HexBiome colorIndex)
     {
         switch(colorIndex){
@@ -82,6 +90,7 @@ public class HexUtility
         }
     }
 
+    // Returns the biome according to that int
     public static HexBiome GetHexBiomeFromInt(int hexBiome)
     {
         switch (hexBiome)
@@ -103,6 +112,7 @@ public class HexUtility
         }
     }
 
+    // Returns a random biome
     public static HexBiome GetRandomHexBiome()
     {
         return GetHexBiomeFromInt(Random.Range(0, HexBiomeSize));
@@ -240,6 +250,10 @@ public class HexUtility
         return hex;
     }
 
+    /**
+     * Returns the hexagon bordering hexagon hex, in the given direction
+     * If it is isnt bordering one, it returns itself.
+     */
     public static Hexagon GetHexagonInDirection(Hexagon hex, HexDirection direct)
     {
         switch(direct)

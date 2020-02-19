@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Builds the mesh for the Hexagon, and colors it in depending on the HexInfo's biome. Then gives the hexObject that we have created the HexInfo component
+/// </summary>
 public class Hexagon
 {
 

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Holds the information for this Hexagon tile. This is a monobehavior meaning that it is attached to a game object. 
+/// </summary>
 public class HexInfo : MonoBehaviour
 {
 
